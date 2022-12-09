@@ -20,6 +20,7 @@ import javax.imageio.ImageIO;
  */
 public class GameServer {
 
+    //mothod od reading URL
     private static String readUrl(String urlString) {
         try {
             URL url = new URL(urlString);
@@ -40,15 +41,18 @@ public class GameServer {
         }
     }
 
+    //method of getting random game by calling readURL method
     public Game getRandomGame() {
        
         String smileapi = "https://marcconrad.com/uob/smile/api.php?out=csv&base64=yes";
         String dataraw = readUrl(smileapi);
         String[] data = dataraw.split(",");
 
+        //decoding the image to byte array
         byte[] decodeImg = Base64.getDecoder().decode(data[0]);
         ByteArrayInputStream quest = new ByteArrayInputStream(decodeImg);
 
+        //getting the solution from the String data array
         int solution = Integer.parseInt(data[1]);
         System.out.println("Solution :"+solution);
 

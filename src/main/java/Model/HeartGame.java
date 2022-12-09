@@ -7,7 +7,7 @@ package Model;
 import java.net.URL;
 
 /**
- *
+ * Heart game Model class
  * @author ravin
  */
 public class HeartGame {

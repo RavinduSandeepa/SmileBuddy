@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Controller;
+package Model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,6 +15,7 @@ public class DB_Connection {
     
     public Connection getConnection(){
     
+        //connecting to the DB
         Connection connection = null;
         final String DB_URL = "jdbc:mysql://localhost:3308/mygame";
         final String USERNAME = "root";

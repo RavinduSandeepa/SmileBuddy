@@ -4,16 +4,18 @@
  */
 package View;
 
-import Controller.DB_Connection;
+import Model.DB_Connection;
 import Model.User;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -81,6 +83,9 @@ public class ScoreBoard extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         highScore3 = new javax.swing.JLabel();
         btnPlayAgain = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        datelabel = new javax.swing.JLabel();
+        timelabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -239,6 +244,24 @@ public class ScoreBoard extends javax.swing.JFrame {
         });
         getContentPane().add(btnPlayAgain, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 560, 200, 50));
 
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Date & Time");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
+
+        datelabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        datelabel.setForeground(new java.awt.Color(255, 255, 255));
+        datelabel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                datelabelMouseMoved(evt);
+            }
+        });
+        getContentPane().add(datelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 130, 50));
+
+        timelabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        timelabel.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(timelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 110, 50));
+
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ravin\\Documents\\NetBeansProjects\\SmileBuddy\\src\\main\\java\\resources\\Login.png")); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 826, 676));
 
@@ -274,6 +297,25 @@ public class ScoreBoard extends javax.swing.JFrame {
             Logger.getLogger(ScoreBoard.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_dropDownActionPerformed
+
+    private void datelabelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_datelabelMouseMoved
+        try (Scanner s = new  Scanner(new URL("http://worldtimeapi.org/api/Asia/Colombo").openStream(),"UTF-8").useDelimiter("\\A")){
+            String x = s.next();
+            System.out.println("today date " + x);
+ 
+            String[] Xsplit =x.split(",");
+   
+            String dateApi = ( Xsplit[2].split("\"") )[3];
+    
+            String[] dateAndTime = dateApi.split("T");
+
+            System.out.println( dateAndTime[0] );
+            timelabel.setText(dateAndTime[0]);
+            datelabel.setText(dateAndTime[1]);
+        } catch (Exception e) {
+            System.err.println("Error while capeturing date time!");
+        }
+    }//GEN-LAST:event_datelabelMouseMoved
 
     /**
      * @param args the command line arguments
@@ -312,6 +354,7 @@ public class ScoreBoard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPlayAgain;
+    private javax.swing.JLabel datelabel;
     private javax.swing.JComboBox<String> dropDown;
     private javax.swing.JLabel highScore1;
     private javax.swing.JLabel highScore2;
@@ -322,6 +365,7 @@ public class ScoreBoard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -331,6 +375,7 @@ public class ScoreBoard extends javax.swing.JFrame {
     private javax.swing.JLabel name1;
     private javax.swing.JLabel name2;
     private javax.swing.JLabel name3;
+    private javax.swing.JLabel timelabel;
     private javax.swing.JLabel usrHighScore;
     private javax.swing.JLabel usrLastScore;
     // End of variables declaration//GEN-END:variables

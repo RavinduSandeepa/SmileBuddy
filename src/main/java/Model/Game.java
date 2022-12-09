@@ -7,7 +7,7 @@ package Model;
 import java.awt.image.BufferedImage;
 
 /**
- *
+ * Smile Game Model class
  * @author ravin
  */
 public class Game {

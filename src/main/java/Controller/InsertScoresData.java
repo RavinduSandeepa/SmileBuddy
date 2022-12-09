@@ -4,6 +4,7 @@
  */
 package Controller;
 
+import Model.DB_Connection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,8 +16,10 @@ import java.sql.SQLException;
  */
 public class InsertScoresData {
 
+    //instering users score data to the DB
     public void insertScore(String username, int score,String game) throws SQLException {
 
+        //creating Database object
         DB_Connection obj = new DB_Connection();
         Connection connection = obj.getConnection();
         PreparedStatement ps = null;
